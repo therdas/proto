@@ -3,7 +3,7 @@ Proto is basically a interpreter for the kind of made up assembly-like language 
 Proto supports common register, stack based and accumulator based organizations, as well as allows registering and referencing variables (but only zero, one and two addressing modes). It is still a work-in-progress. Use at your own discretion.
 
 ## Syntax
-Proto supports one, two and zero addressing modes, and supports only one operation per line (with the exceptions of some functions such as `rani` or `inp`.
+Proto supports one, two and zero addressing modes, and supports only one operation per line (with the exceptions of some functions such as `rani` or `inp`) 
 
 ### Input
 To take input from the user, just put the keyword `inp` in place of any operand. For example:
@@ -27,10 +27,10 @@ prn a
 Expected Output: `60`
 
 ### Looping
-The following program demonstrates looping. It adds all numbers from 1 to 100
+The following program demonstrates looping. It adds all numbers from 1 to 50
 
 ```
-def a 10
+def a 50
 def b 0
 def c 0
 add c 1
@@ -102,9 +102,10 @@ inp|Used as operand|Itself|Puts user input in its place
 * HTML, CSS
 
 ## Versions
-* 0.0.1 Initial Proto release, supports only 2 address modes, no stack or flow control
-* 0.0.2 Current release
-[] 0.0.3 Planned future release with more strict syntax checking, infinite loop detection
+- [X] 0.0.1 Initial Proto release, supports only 2 address modes, no stack or flow control
+- [X] 0.0.2 Current release
+- [ ] 0.0.3 Planned future release with more strict syntax checking, infinite loop detection
+- [ ] 0.0.4 Planned future release with support for binary numbers
 
 ## License
 This project is under the MIT License. See the LICENSE.md file for more information
