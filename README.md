@@ -15,7 +15,7 @@ add a inp
 This will take input from the user (using `prompt()`) and add then replace `inp` with the given input.
 
 ### Example Program
-The following program adds three numbers ([Try it ⇨](http://therdas.github.io/proto/?code=def%20a%2010%0Aadd%20a%2020%0Aadd%20a%2030%0Aprn%20a]))
+The following program adds three numbers ([Try it ⇨](http://therdas.github.io/proto/?code=def%20a%2010%0Aadd%20a%2020%0Aadd%20a%2030%0Aprn%20a))
 
 ```
 def a 10
