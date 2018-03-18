@@ -15,7 +15,7 @@ add a inp
 This will take input from the user (using `prompt()`) and add then replace `inp` with the given input.
 
 ### Example Program
-The following program adds three numbers ([http://therdas.github.io/proto/?code=def%20a%2010%0Aadd%20a%2020%0Aadd%20a%2030%0Aprn%20a](Try it ⇨))
+The following program adds three numbers ([Try it ⇨](http://therdas.github.io/proto/?code=def%20a%2010%0Aadd%20a%2020%0Aadd%20a%2030%0Aprn%20a]))
 
 ```
 def a 10
@@ -27,7 +27,7 @@ prn a
 Expected Output: `60`
 
 ### Looping
-The following program demonstrates looping. It adds all numbers from 1 to 50 ([http://therdas.github.io/proto/?code=def%20a%2050%0Adef%20b%200%0Adef%20c%200%0Aadd%20c%201%0Aadd%20b%20c%0Asub%20a%201%0Alda%20a%0Asza%0Abun%203%0Aprn%20b](Try it ⇨))
+The following program demonstrates looping. It adds all numbers from 1 to 50 ([Try it ⇨](http://therdas.github.io/proto/?code=def%20a%2050%0Adef%20b%200%0Adef%20c%200%0Aadd%20c%201%0Aadd%20b%20c%0Asub%20a%201%0Alda%20a%0Asza%0Abun%203%0Aprn%20b))
 
 ```
 def a 50
