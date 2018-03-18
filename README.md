@@ -19,15 +19,20 @@ This adds 10 to a, and stores it in a.
 
 Operator|Syntax|Operates on|Description
 --------|------|-------|-----------
-add|add `[op 1 (V)]` `[op2 (A)]`<br>add `[op1 (A)]`<br>add|`op1`<br>`acc`<br>`stack`| `op1` = `op1` + `op2`<br>`acc` += `op1`<br>Add first two `stack` elements
-sub|sub `[op 1 (V)]` `[op2 (A)]`<br>sub `[op1 (A)]`<br>sub|`op1`<br>`acc`<br>`stack`| `op1` = `op1` - `op2`<br>`acc` -= `op1`<br>Subtract first two `stack` elements
-mul|mul `[op 1 (V)]` `[op2 (A)]`<br>mul `[op1 (A)]`<br>mul|`op1`<br>`acc`<br>`stack`| `op1` = `op1` \* `op2`<br>`acc` \*= `op1`<br>Multiply first two `stack` elements
-div|div `[op 1 (V)]` `[op2 (A)]`<br>div `[op1 (A)]`<br>div|`op1`<br>`acc`<br>`stack`| `op1` = `op1` \/ `op2`<br>`acc` \/= `op1`<br>Divide first two `stack` elements
-mod|mod `[op 1 (V)]` `[op2 (A)]`<br>mod `[op1 (A)]`<br>mod|`op1`<br>`acc`<br>`stack`| `op1` = `op1` \% `op2`<br>`acc` \%= `op1`<br>Compute modulus using first two `stack` elements
-and|and `[op 1 (V)]` `[op2 (A)]`<br>and `[op1 (A)]`<br>and|`op1`<br>`acc`<br>`stack`| `op1` = `op1` AND `op2`<br>`acc` = `acc` AND `op1`<br>Logical AND first two `stack` elements
-or|or `[op 1 (V)]` `[op2 (A)]`<br>or `[op1 (A)]`<br>or|`op1`<br>`acc`<br>`stack`| `op1` = `op1` OR `op2`<br>`acc` = `acc` OR `op1`<br>Logical OR first two `stack` elements
-xor|xor `[op 1 (V)]` `[op2 (A)]`<br>xor `[op1 (A)]`<br>xor|`op1`<br>`acc`<br>`stack`| `op1` = `op1` XOR `op2`<br>`acc` = `acc` XOR `op1`<br>Logical XOR first two `stack` elements
+add|add `[op1 (V)]` `[op2 (A)]`<br>add `[op1 (A)]`<br>add|`op1`<br>`acc`<br>`stack`| `op1` = `op1` + `op2`<br>`acc` += `op1`<br>Add first two `stack` elements
+sub|sub `[op1 (V)]` `[op2 (A)]`<br>sub `[op1 (A)]`<br>sub|`op1`<br>`acc`<br>`stack`| `op1` = `op1` - `op2`<br>`acc` -= `op1`<br>Subtract first two `stack` elements
+mul|mul `[op1 (V)]` `[op2 (A)]`<br>mul `[op1 (A)]`<br>mul|`op1`<br>`acc`<br>`stack`| `op1` = `op1` \* `op2`<br>`acc` \*= `op1`<br>Multiply first two `stack` elements
+div|div `[op1 (V)]` `[op2 (A)]`<br>div `[op1 (A)]`<br>div|`op1`<br>`acc`<br>`stack`| `op1` = `op1` \/ `op2`<br>`acc` \/= `op1`<br>Divide first two `stack` elements
+mod|mod `[op1 (V)]` `[op2 (A)]`<br>mod `[op1 (A)]`<br>mod|`op1`<br>`acc`<br>`stack`| `op1` = `op1` \% `op2`<br>`acc` \%= `op1`<br>Compute modulus using first two `stack` elements
+lt|lt `[op1 (V)]` `[op2 (A)]`<br>lt `[op1 (A)]`<br>lt|`cflag`| `cflag` = `op1` < `op2`<br>`cflag` = `cflag` < `op2`<br>`cflag` = `stack[top-1]`<`stack[top]`
+and|and `[op1 (V)]` `[op2 (A)]`<br>and `[op1 (A)]`<br>and|`op1`<br>`acc`<br>`stack`| `op1` = `op1` AND `op2`<br>`acc` = `acc` AND `op1`<br>Logical AND first two `stack` elements
+or|or `[op1 (V)]` `[op2 (A)]`<br>or `[op1 (A)]`<br>or|`op1`<br>`acc`<br>`stack`| `op1` = `op1` OR `op2`<br>`acc` = `acc` OR `op1`<br>Logical OR first two `stack` elements
+xor|xor `[op1 (V)]` `[op2 (A)]`<br>xor `[op1 (A)]`<br>xor|`op1`<br>`acc`<br>`stack`| `op1` = `op1` XOR `op2`<br>`acc` = `acc` XOR `op1`<br>Logical XOR first two `stack` elements
 not|not `[op1 (V)]`<br>not|`op1`<br>`acc` and `stack`| `op1` = NOT `op1`<br>`acc` = NOT `acc`, Logical NOT first `stack` element
+def|def `[op1 (V)]` `[op2 (A)]`<br>def `[op1 (V)]`|NA| Defines variable `op1`, sets it to `op2`<br>Defines variable `op1`
+set|set `[op1 (V)]` `[op2 (A)]`<br>set `[op1 (A)]`|`op1`<br>`acc`|Sets variable `op1` = `op2`<br>Sets `acc` = `op2`
+setz|setz `[op1 (V)]`|`op1`|Sets variable `op1` = 0
+del|del `[op1 (V)]`|`op1`|Deletes variable `op1`
 
 
 †See Logical Operations section for reference
