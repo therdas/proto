@@ -19,7 +19,7 @@ This adds 10 to a, and stores it in a.
 
 Operator|Syntax|Operates on|Description
 --------|------|-------|-----------
-add|add `[op 1 (V)]` `[op2 (A)]`<br>add `[op1 (A)]`|2A: `op1`<br>1A: `acc`<br>0A: `stack`|Stores `op1` + `op2` in `op1`
+add|add `[op 1 (V)]` `[op2 (A)]`<br>add `[op1 (A)]`<br>add|`op1`<br>`acc`<br>`stack`| `op1` = `op1` + `op2`<br>`acc` += `op1`<br>Pop and add first two `stack` elements and push to stack
 
 †See Logical Operations section for reference
 ‡This will be changed later to a separate flag
