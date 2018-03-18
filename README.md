@@ -17,23 +17,9 @@ An example of two address instruction is
 
 This adds 10 to a, and stores it in a.
 
-Function|Operand 1|Operand 2|Example|Description
---------|---------|---------|-------|-----------
-add|Variable|Number/Variable|add a 10|Stores `op1` + `op2` in `op1`
-sub|Variable|Number/Variable|sub a 10|Stores `op1` - `op2` in `op1`
-mul|Variable|Number/Variable|mul a 10|Stores `op1` * `op2` in `op1`
-div|Variable|Number/Variable|div a 10|Stores `op1` / `op2` in `op1`
-mod|Variable|Number/Variable|mod a 10|Stores `op1` % `op2` in `op1` (modulus)
-set|Variable|Number/Variable|set a 10|Stores `op2` in `op1`
-def|Variable|Number/Variable|def a 10|Defines `op1` and stores `op2` in it
-and|Variable|Number/Variable|and a 10|Stores `op1` AND `op2` in `op1` †
-or|Variable|Number/Variable|or a 10|Stores `op1` OR `op2` in `op1` †
-xor|Variable|Number/Variable|xor a 10|Stores `op1` XOR `op2` in `op1` †
-eq|Variable|Number/Variable|eq a 10|Checks if `op1` = `op2` and stores result in `temp`‡
-lt|Variable|Number/Variable|lt a 10|Checks if `op1` < `op2` and stores result in `temp`‡
-gt|Variable|Number/Variable|gt a 10|Checks if `op1` > `op2` and stores result in `temp`‡
-lte|Variable|Number/Variable|lte a 10|Checks if `op1` ≤ `op2` and stores result in `temp`‡
-gte|Variable|Number/Variable|gte a 10|Checks if `op1` ≥ `op2` and stores result in `temp`‡
+Operator|Syntax|Operates on|Description
+--------|------|-------|-----------
+add|add `[op 1 (V)]` `[op2 (A)]`<br>add `[op1 (A)]`|2A: `op1`<br>1A: `acc`<br>0A: `stack`|Stores `op1` + `op2` in `op1`
 
 †See Logical Operations section for reference
 ‡This will be changed later to a separate flag
