@@ -17,7 +17,8 @@ This will take input from the user (using `prompt()`) and add then replace `inp`
 ### Example Program
 The following program adds three numbers
 
-```def a 10
+```
+def a 10
 add a 20
 add a 30
 prn a
@@ -28,7 +29,8 @@ Expected Output: `60`
 ### Looping
 The following program demonstrates looping. It adds all numbers from 1 to 100
 
-```def a 10
+```
+def a 10
 def b 0
 def c 0
 add c 1
