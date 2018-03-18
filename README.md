@@ -7,7 +7,11 @@ Proto supports one, two and zero addressing modes, and supports only one operati
 
 ### Input
 To take input from the user, just put the keyword `inp` in place of any operand. For example:
-    add a inp
+
+```
+add a inp
+```
+
 This will take input from the user (using `prompt()`) and add then replace `inp` with the given input.
 
 ### Example Program
@@ -87,6 +91,21 @@ ran|rani|Itself|Replaces itself with random integer ∈ `[0,10]`
 ranr|ranr|Itself|Replaces itself with random real number ∈ `[0,1)`
 ranp|ranp|Itself|Replaces itself with random number ∈ `[0,100]` (percentage)
 prn|prn `op1`|Output|Prints out `op1`
-inp|Used as operand|Puts user input in its place
+inp|Used as operand|Itself|Puts user input in its place
 
 †NOT will treat 0/1 as binary and rest as decimal. This was done to prevent default behaviour, because in JS, ~0 is -1 and ~1 is -2 (Two's complement format)
+
+## Built With
+* Pure JS
+* HTML, CSS
+
+## Versions
+* 0.0.1 Initial Proto release, supports only 2 address modes, no stack or flow control
+* 0.0.2 Current release
+[] 0.0.3 Planned future release with more strict syntax checking, infinite loop detection
+
+## License
+This project is under the MIT License. See the LICENSE.md file for more information
+
+## Acknowledgements
+A small part of Proto uses code from [This StackOverflow Answer](https://stackoverflow.com/a/1830844/)
