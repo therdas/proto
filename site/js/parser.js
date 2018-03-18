@@ -1,9 +1,14 @@
 var symbols = {};
-symbols['temp'] = 'NaN';
-var keywords = 'add sub mul div mod setz set rani ranp ranr lt gt lte gte eq def del ist prn inp';
-var _bin = 'add sub mul div mod set lt gt lte gte eq def';
-var _un = 'setz def del ist prn';
-var _anon = 'rani ranp ranr inp';
+var acc = 0;
+symbols['cflag'] = 'NaN';
+symbols['R1'] = 'NaN'; symbols['R2'] = 'NaN'; symbols['R3'] = 'NaN'; symbols['R4'] = 'NaN'; symbols['R5'] = 'NaN'; symbols['R6'] = 'NaN'; symbols['R7'] = 'NaN';
+var _addrStack = [];
+var _genStack = [];
+var keywords = 'add sub mul div mod setz set rani ranp ranr lt gt lte gte eq def del ist prn inp return and or not xor';
+var _bin = 'add sub mul div mod set lt gt lte gte eq def and or xor';
+var _un = 'setz def del ist prn bun bsa add sub mul div mod push pop prntop and or xor';
+var _anon = 'rani ranp ranr inp return add sub mul div mod cla inca spa sna sza pop not';
+var _line = 0;
 
 function tokenise (string) {
 	var tokens = string.split(' ');
@@ -65,16 +70,22 @@ function processToken(string) {
 	return obj;
 }
 
-
-
 //
 //  Checking Arguements
 //
+
 function checkArgsT_V (op1) {
 	if(op1.type != 'variable')
 		return false;
 
  	return true;
+}
+
+function checkArgsT_A (op1) {
+	if(op1.type != 'numeric' && op1.type != 'variable')
+		return false;
+
+	return true;
 }
 
 function checkArgsT_AA (op1, op2) {
@@ -108,142 +119,7 @@ function checkArgsT_VN (op1, op2) {
 }
 
 //
-//	Arithmetic Functions
-//
-
-function _add (op1, op2) {
-	if (!checkArgsT_VN (op1, op2))
-		return false;
-
-	if(op2.type == 'numeric')
-		symbols[op1.value] = symbols[op1.value] + op2.value;
-	else
-		symbols[op1.value] = symbols[op1.value] + symbols[op2.value];
-
-	return symbols[op1.value];
-}
-
-function _sub (op1, op2) {
-	if (!checkArgsT_VN (op1, op2))
-		return false;
-
-	if(op2.type == 'numeric')
-		symbols[op1.value] = symbols[op1.value] - op2.value;
-	else
-		symbols[op1.value] = symbols[op1.value] - symbols[op2.value];
-
-	return symbols[op1.value];
-}
-
-function _mul (op1, op2) {
-	if (!checkArgsT_VN (op1, op2))
-		return false;
-
-	if(op2.type == 'numeric')
-		symbols[op1.value] = symbols[op1.value] * op2.value;
-	else
-		symbols[op1.value] = symbols[op1.value] * symbols[op2.value];
-
-	return symbols[op1.value];
-}
-
-function _div (op1, op2) {
-	if (!checkArgsT_VN (op1, op2))
-		return false;
-
-	if(op2.type == 'numeric'){
-		if(op2.value == 0){
-		 	symbols[op1.value] = 'NaN';
-			return false;
-		}
-		symbols[op1.value] = symbols[op1.value] / op2.value;
-	} else {
-		if(symbols[op2.value] == 0){ 
-			symbols[op2.value] = 'NaN';
-			return false;
-		}
-		symbols[op1.value] = symbols[op1.value] / symbols[op2.value];
-	}
-
-	return symbols[op1.value];
-}
-
-function _mod (op1, op2) {
-	if (!checkArgsT_VN (op1, op2))
-		return false;
-
-	if(op2.type == 'numeric')
-		symbols[op1.value] = symbols[op1.value] % op2.value;
-	else
-		symbols[op1.value] = symbols[op1.value] % symbols[op2.value];
-
-	return symbols[op1.value];
-}
-
-function _rni () {
-	obj = {};
-	obj['value'] = Math.floor(Math.random() * Math.floor(11));
-	obj['type'] = 'numeric';
-	return obj;
-}
-
-function _rnp () {
-	obj = {};
-	obj['value'] = Math.floor(Math.random() * Math.floor(101));
-	obj['type'] = 'numeric';
-	return obj;
-}
-
-function _rnr () {
-	obj = {};
-	obj['value'] = Math.random();
-	obj['type'] = 'numeric';
-	return obj;
-}
-
-//
-//  Symbol Manipulation
-//
-
-function _def (op1) {
-	if( op1.type!='variable' )
-		return false;
-
-	if(arguments.length>1 && arguments[1].type != 'numeric')
-		return false;
-
-	symbols[op1.value];
-	if(arguments.length>1)
-		symbols[op1.value] = arguments[1].value;
-	else
-		symbols[op1.value] = 'NaN'
-
-	return symbols[op1.value];
-}
-
-function _stz (op1) {
-	if(!checkArgsT_V(op1))
-		return false;
-
-	symbols[op1.value] = 0;
-	return symbols[op1.value];
-}
-
-function _set (op1, op2) {
-	if(!checkArgsT_VA(op1, op2))
-		return false;
-
-	if(op2.type == 'numeric')
-		symbols[op1.value] = op2.value;
-
-	if(op2.type == 'variable')
-		symbols[op1.value] = symbols[op2.value];
-
-	return symbols[op1.value];
-}
-
-//
-//  Equality Functions
+// Memory functions
 //
 
 function fetchData (opr){
@@ -252,125 +128,22 @@ function fetchData (opr){
 	else
 		return symbols[opr.value];
 }
-
-function _gt (op1, op2) {
-	if(!checkArgsT_AA(op1, op2))
-		return false;
-
-	var operand1 = fetchData(op1),
-		operand2 = fetchData(op2);
-	symbols['temp'] = operand1 > operand2;
-	return operand1 > operand2;
-}
-
-function _lt (op1, op2) {
-	if(!checkArgsT_AA(op1, op2))
-		return false;
-
-	var operand1 = fetchData(op1),
-		operand2 = fetchData(op2);
-
-	symbols['temp'] = operand1 < operand2;
-	return operand1 < operand2;
-}
-
-function _gte (op1, op2) {
-	if(!checkArgsT_AA(op1, op2))
-		return false;
-
-	var operand1 = fetchData(op1),
-		operand2 = fetchData(op2);
-
-	symbols['temp'] = operand1 >= operand2;
-	return operand1 >= operand2;
-}
-
-function _lte (op1, op2) {
-	if(!checkArgsT_AA(op1, op2))
-		return false;
-
-	var operand1 = fetchData(op1),
-		operand2 = fetchData(op2);
-
-	symbols['temp'] = operand1 <= operand2;
-	return operand1 <= operand2;
-}
-
-function _eq (op1, op2) {
-	if(!checkArgsT_AA(op1, op2))
-		return false;
-
-	var operand1 = fetchData(op1),
-		operand2 = fetchData(op2);
-
-	symbols['temp'] = (operand1 == operand2);
-	return operand1 == operand2;
-}
-
-function _del (op1) {
-	if(!checkArgsT_V(op1))
-		return false;
-
-	delete symbols[op1.value];
-	return true;
-}
-
-function _ist (op1){
-	if(!checkArgsT_V(op1))
-		return false;
-	if(symbols.hasOwnProperty(op1.value))
-		return true;
-	else return false;
-}
-
-function _prn (op1) {
-	if(op1.type == 'numeric')
-		_printHandler(op1.value);
-	else if(_ist(op1))
-		_printHandler(symbols[op1.value]);
-	else 
-		_printHandler(op1.value);
-
-	return true;
-}
-
-function _inp () {
-	var temp = window.prompt('Enter Value', 'Value...');
-	return processToken(temp);
-}
-
 //
-//  IO Handlers
+// Handles
 //
-
-function _printHandler (str) {
-	document.getElementById('here').innerHTML += str + '<br/>';
-}
-
-function _resHandler (str) {
-	if(str.hasOwnProperty('value')){
-		document.getElementById('eachLineRes').innerHTML += str.value + '<br/>';
-	} else{
-		document.getElementById('eachLineRes').innerHTML += str + '<br/>';
-	}
-}
-
-function _clearResHandler() {
-	document.getElementById('eachLineRes').innerHTML = '';
-}
-
-function _printClearHandler() {
-	document.getElementById('here').innerHTML = '';
-}
-
 document.getElementById('submit').addEventListener('click', function(e) {
 	getFromEnv();
 });
+document.getElementById('elrbtn').addEventListener('click', function(e) {
+	document.getElementById('eachLineRes').classList.toggle('hidden');
+});
+
 //
 //  And now the actual parser and executer
 //
 
 var functionMap = {
+	lda: _set,
 	add: _add,
 	sub: _sub,
 	mul: _mul,
@@ -390,7 +163,23 @@ var functionMap = {
 	del: _del,
 	ist: _ist,
 	prn: _prn,
-	inp: _inp
+	inp: _inp,
+	bun: _bun,
+	bsa: _bsa,
+	return: _return,
+	cla: _cla,
+	inca: _inca,
+	spa: _spa,
+	sna: _sna,
+	sza: _sza,
+	push: _push,
+	pop: _pop,
+	prntop: _prntop,
+	and: _and,
+	or: _or,
+	not: _not,
+	xor: _xor,
+	mov: _set
 };
 
 function checkOp (str) {
@@ -444,11 +233,13 @@ function getFromEnv() {
 	_printClearHandler();
 	_clearResHandler();
 	var text = document.getElementById('editor').value.split(/\r|\n/);
-	for(var i = 0; i<text.length; ++i) {
-		flag = parse(text[i]);
+	_line = 0;
+	while(_line<text.length) {
+		flag = parse(text[_line]);
 		if(flag == false) {
-			_printHandler('Encountered fatal error at line '+ (i+1) + '.');
+			_printHandler('Encountered fatal error at line '+ (_line+1) + '.');
 			break;
 		}
+		++_line;
 	};
 }

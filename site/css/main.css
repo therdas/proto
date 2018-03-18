@@ -1,0 +1,94 @@
+a {
+	color: black;
+	text-decoration: none;
+}
+body{
+	width: 60%;
+	margin: 3em auto;
+	font-size: 1.1em;
+	font-family: 'Ubuntu Mono', sans-serif;
+}
+#editor{
+	width: 100%;
+	font-family: 'Ubuntu Mono', monospace;
+	font-size: 1.1em;
+	height: 19em;
+	margin-bottom: 1em;
+	box-sizing: border-box;
+}
+.btn {
+	display: block;
+	padding: 0.5em 0.7em;
+	background-color: rgba(0,0,0,0.2);
+	box-sizing: border-box;
+	transition: all 0.05s ease-in-out;
+	margin: 0.7em 0 0 0;
+}
+.btn:hover{
+	background-color: rgba(0,0,0,0.5);
+}
+.btn:active{
+	background-color: rgba(0,0,0,0.8);
+	color: white;
+}
+.shbtn{
+	display: block;
+	padding: 0.5em 0.7em;
+	background-color: rgba(0,0,0,0.1);
+	box-sizing: border-box;
+	transition: all 0.05s ease-in-out;
+	margin: 0.7em 0 0 0;
+}
+.shbtn>input{
+	display: inline-block;
+	font-size: 1em;
+}
+.box {
+	display: block;
+	padding: 0.5em 0.7em;
+	background-color: rgba(0,0,0,0.1);
+	box-sizing: border-box;
+	min-height: 5em;
+}
+#here {
+	display: block;
+	margin-top: 0.2em;
+	font-family: 'Ubuntu Mono', monospace;
+}
+h1 {
+	margin: 0.1em 0 0.4em 0;
+	font-size: 1em;
+	display: inline-block;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+header{
+	display: block;
+	width: 100%;
+}
+header> span, header> a {
+	float: right;
+	margin: 0.1em 0 0.4em 0;
+	font-size: 1em;
+	display: inline-block;
+	text-transform: uppercase;
+	font-weight: 700;
+	opacity: 0.7;
+	transition: opacity 0.1s ease-in-out;
+	margin-left: 1em;
+}
+header>span:hover, header>a:hover {
+	cursor: pointer;
+	opacity: 0.9;
+}
+.hidden {
+	display: none !important;
+}
+
+@media screen and (max-width: 800px) {
+	body{
+		margin-top: 0.5em;
+		width: 90%;
+		font-size: 1.2em;
+	}
+}
