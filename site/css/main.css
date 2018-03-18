@@ -3,10 +3,14 @@ a {
 	text-decoration: none;
 }
 body{
-	width: 60%;
-	margin: 3em auto;
+	margin: 0;
+	padding: 0;
 	font-size: 1.1em;
 	font-family: 'Ubuntu Mono', sans-serif;
+}
+#main{
+	width: 60%;
+	margin: 3em auto;
 }
 #editor{
 	width: 100%;
@@ -50,6 +54,20 @@ body{
 	box-sizing: border-box;
 	min-height: 5em;
 }
+#toast{
+	position: fixed;
+	bottom: 1em;
+	left: 1em;
+	color: white;
+	padding: 0.7em 1em;
+	background-color: rgb(40,40,40);
+	border-radius: 3px;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.5), 0 0 6px rgba(0,0,0,0.2);
+	transition: bottom 0.4s ease-in-out;
+}
+.hiddenToast {
+	bottom: -5em !important;
+}
 #here {
 	display: block;
 	margin-top: 0.2em;
@@ -87,8 +105,16 @@ header>span:hover, header>a:hover {
 
 @media screen and (max-width: 800px) {
 	body{
+		font-size: 1.2em;
+	}
+	#main{
 		margin-top: 0.5em;
 		width: 90%;
-		font-size: 1.2em;
+	}
+	#toast{
+		border-radius: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
 	}
 }

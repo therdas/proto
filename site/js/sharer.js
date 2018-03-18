@@ -19,6 +19,9 @@ document.getElementById('sharebtn').addEventListener('click', function(e) {
     	console.log('Oops, unable to copy');
   	}
 
+	notifyToast();
+	setTimeout(notifyToast, 2000);
+
 });
 
 function buildURI () {
@@ -40,3 +43,6 @@ function retreiveCodeFromURI() {
 	return window.location.href.slice(window.location.href.indexOf('?code=')+key.length);
 }
 
+function notifyToast(){
+	document.getElementById('toast').classList.toggle('hiddenToast');
+}
