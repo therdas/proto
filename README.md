@@ -37,6 +37,7 @@ def|def `[op1 (V)]` `[op2 (A)]`<br>def `[op1 (V)]`|NA| Defines variable `op1`, s
 set|set `[op1 (V)]` `[op2 (A)]`<br>set `[op1 (A)]`|`op1`<br>`acc`|Sets variable `op1` = `op2`<br>Sets `acc` = `op2`
 setz|setz `[op1 (V)]`|`op1`|Sets variable `op1` = 0
 del|del `[op1 (V)]`|`op1`|Deletes variable `op1`
+bun|bun `[op1 (A)]`|Current line<br>being executed|Jumps to line `op1`
 
 
 †See Logical Operations section for reference
