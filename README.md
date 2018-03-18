@@ -38,6 +38,8 @@ set|set `[op1 (V)]` `[op2 (A)]`<br>set `[op1 (A)]`|`op1`<br>`acc`|Sets variable 
 setz|setz `[op1 (V)]`|`op1`|Sets variable `op1` = 0
 del|del `[op1 (V)]`|`op1`|Deletes variable `op1`
 bun|bun `[op1 (A)]`|Current line<br>being executed|Jumps to line `op1`
+bsa|bsa `[op1 (A)]`|Current line<br>being executed|Jumps to line `op1`, pushes value of current line<br>to `addressStack` for return to use
+return|return|Current line<br>being executed|Jumps to line `addressStack[top]`
 
 
 †See Logical Operations section for reference
