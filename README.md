@@ -10,7 +10,45 @@ To take input from the user, just put the keyword `inp` in place of any operand.
     add a inp
 This will take input from the user (using `prompt()`) and add then replace `inp` with the given input.
 
-### Reference table for all operators
+### Example Program
+The following program adds three numbers
+
+```def a 10
+add a 20
+add a 30
+prn a
+```
+
+Expected Output: `60`
+
+### Looping
+The following program demonstrates looping. It adds all numbers from 1 to 100
+
+```def a 10
+def b 0
+def c 0
+add c 1
+add b c
+sub a 1
+lda a
+sza
+bun 3
+prn b
+```
+
+Expected Output: `55`
+
+## UI
+The UI has three parts:
+1. The Editor
+2. The Output view
+3. The Debugging Screen
+
+1 and 2 are self explanatory, 3 shows the result of each instrution executed, and is hidden by default. To show, press `Show linewise results (beta)`
+
+## Reference table for all operators
+In the table below, (A) indicates that the operand can either be a variable or a number. (V) means that the operand must be a variable. If none of these are mentioned, the operand can be anything, including a string (Without spaces), for example in case of the `prn` operator
+
 Operator|Syntax|Operates on|Description
 --------|------|-------|-----------
 add|add `[op1 (V)]` `[op2 (A)]`<br>add `[op1 (A)]`<br>add|`op1`<br>`acc`<br>`stack`| `op1` = `op1` + `op2`<br>`acc` += `op1`<br>Add first two `stack` elements
