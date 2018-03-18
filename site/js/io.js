@@ -17,6 +17,6 @@ function _prn (op1) {
 }
 
 function _inp () {
-	var temp = window.prompt('Enter Value', 'Value...');
+	var temp = window.prompt('Enter Value');
 	return processToken(temp);
 }
