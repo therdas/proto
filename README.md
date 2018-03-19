@@ -92,7 +92,7 @@ prntop|prntop|Output|Prints top element of `stack`
 ran|rani|Itself|Replaces itself with random integer ∈ `[0,10]`
 ranr|ranr|Itself|Replaces itself with random real number ∈ `[0,1)`
 ranp|ranp|Itself|Replaces itself with random number ∈ `[0,100]` (percentage)
-prn|prn `op1`|Output|Prints out `op1`
+prn|prn<br>prn `op1`<br>|Output|Prints out `acc`<br>Prints out `op1`, if `op1` is a <br>variable print its value instead
 inp|Used as operand|Itself|Puts user input in its place
 
 †NOT will treat 0/1 as binary and rest as decimal. This was done to prevent default behaviour, because in JS, ~0 is -1 and ~1 is -2 (Two's complement format)
