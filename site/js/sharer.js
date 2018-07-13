@@ -5,7 +5,7 @@ window.onload = function(e) {
 	}
 }
 
-document.getElementById('sharebtn').addEventListener('click', function(e) {
+function copycode(e){
 	var copyTextarea = document.getElementById('shareboxer');
 	copyTextarea.value = buildURI();
   	copyTextarea.focus();
@@ -21,8 +21,10 @@ document.getElementById('sharebtn').addEventListener('click', function(e) {
 
 	notifyToast();
 	setTimeout(notifyToast, 2000);
+}
 
-});
+document.getElementById('sharebtn').addEventListener('click', copycode);
+document.getElementById('sharetext').addEventListener('click', copycode);
 
 function buildURI () {
 	var mainPath = 'http://therdas.github.io/proto/';

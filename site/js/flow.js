@@ -3,8 +3,10 @@
 //
 
 function _bun(op) {
-	if(!checkArgsT_A(op))
+	if(!checkArgsT_A(op)){
+		_logErr('BUN requires a variable or a number');
 		return false;
+	}
 
 	if(op.type == 'numeric')
 		_line = op.value - 1;
@@ -15,8 +17,10 @@ function _bun(op) {
 }
 
 function _bsa(op) {
-	if(!checkArgsT_A(op))
+	if(!checkArgsT_A(op)){
+		_logErr('BSA requires a variable or a number');
 		return false;
+	}
 
 	_addrStack.push(_line);
 
@@ -29,8 +33,10 @@ function _bsa(op) {
 }
 
 function _return() {
-	if(_addrStack.length==0)
+	if(_addrStack.length==0){
+		_logErr('No address to return to. Using return requires a previous BSA instruction');
 		return false;
+	}
 	else
 		_line = _addrStack.pop();
 

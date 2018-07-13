@@ -21,3 +21,18 @@ function _clearResHandler() {
 function _printClearHandler() {
 	document.getElementById('here').innerHTML = '';
 }
+
+function _logErr(err){
+	if(_errFlag == false){
+		_errc = (_line+1) + ': '+err;
+		_prevErr = _line;
+	} else {
+		if(_prevErr != _line)
+			_errc += '<br/>' + (_line+1) + ': '+err;
+		else
+			_errc += '<br/>&nbsp;&nbsp;&nbsp;&#x21b3; ' + err;
+		_prevErr = _line;
+	}
+	_errFlag = true;
+	return true;
+}

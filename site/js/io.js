@@ -16,7 +16,26 @@ function _prn (op1) {
 	return true;
 }
 
-function _inp () {
-	var temp = window.prompt('Enter Value');
-	return processToken(temp);
+function _inp (op1) {
+	if(op1 == undefined){
+
+		var temp = _input;
+		return processToken(temp);
+		
+	} else if(arguments.length == 1) {
+
+		if( !checkArgsT_V(arguments[0]) ){
+			_logErr('The argument must be a variable');
+		}
+		console.log(processToken(_input));
+		_set(op1, processToken(_input));
+		return _input;
+
+	}
+}
+
+function _inpa (){
+	var temp = _input;
+	acc = temp;
+	return(processToken(temp));
 }

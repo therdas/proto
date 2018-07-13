@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Proto 0.0.1</title>
+	<meta name="theme-color" content="#f7f7f7"/>
+	<link rel="shortcut icon" type="image/png" href="site/img/favicon.png"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400i,700,700i" rel="stylesheet">
+	<style>
+		body{
+			width: 60%;
+			margin: 3em auto;
+			font-size: 1.1em;
+			font-family: 'Ubuntu Mono', sans-serif;
+		}
+		#editor{
+			width: 100%;
+			font-family: 'Ubuntu Mono', monospace;
+			font-size: 1.1em;
+			height: 19em;
+			margin-bottom: 1em;
+			box-sizing: border-box;
+		}
+		#submit {
+			display: block;
+			padding: 0.5em 0.7em;
+			background-color: rgba(0,0,0,0.2);
+			box-sizing: border-box;
+		}
+		#result, #eachLineRes {
+			display: block;
+			padding: 0.5em 0.7em;
+			background-color: rgba(0,0,0,0.1);
+			box-sizing: border-box;
+			min-height: 5em;
+			margin-top: 1em;
+		}
+		#here, #eachLineRes {
+			display: block;
+			margin-top: 0.2em;
+			font-family: 'Ubuntu Mono', monospace;
+		}
+		h3 {
+			margin: 0.1em 0 0.4em 0;
+			font-size: 1em;
+			text-transform: uppercase;
+			font-weight: 700;
+		}
+
+		@media screen and (max-width: 800px) {
+			body{
+				margin-top: 0.5em;
+				width: 90%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<h3>Proto 0.0.1</h3>
+	<textarea id="editor" spellcheck="false" placeholder="Type Code Here">def a 7
+def b 10
+def c
+setz c
+add c a
+add c b
+prn value_of_(a_+_b)_is
+prn c
+def d inp
+add c d
+prn value_of_c_+_d_is
+prn c</textarea>
+	<div id="submit">Run</div>
+	<div id="result">Results:
+		<span id="here">
+		</span>
+	</div>
+	<div id="eachLineRes">
+		
+	</div>
+	<script type="text/javascript" src="site/js/parser.js"></script>
+</body>
+</html>

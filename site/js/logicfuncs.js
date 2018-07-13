@@ -3,68 +3,50 @@
 //
 
 function _and () {
-	if(arguments.length == 0) {
-		_genStack.push(_genStack.pop()&_genStack.pop())
-		return _genStack[_genStack.length-1];
+	var fun = function(x, y) {
+		return x&y;
 	}
 
-	op1 = arguments[0];
-
-	if(arguments.length==1)
-		var op2 = false;
-	else
-		var op2 = arguments[1];
-
-	if ( !(checkArgsT_VN (op1, op2)||checkArgsT_A(op1)) )
-		return false;
-
-	if(arguments.length == 1) {
-		if(op1.type == 'numeric')
-			acc &= op1.value;
-		else
-			acc &= symbols[op1.value];
-		return acc;
-	} else if (arguments.length > 1){
-		if(op2.type == 'numeric')
-			symbols[op1.value] = symbols[op1.value] & op2.value;
-		else
-			symbols[op1.value] = symbols[op1.value] & symbols[op2.value];
-		return symbols[op1.value];
+	switch(arguments.length) {
+		case 0: return _binaryApplier(fun);                                            break;
+		case 1: return _binaryApplier(fun, arguments[0]);                              break;
+		case 2: return _binaryApplier(fun, arguments[0], arguments[1]);                break;
+		case 3: return _binaryApplier(fun, arguments[0], arguments[1], arguments[2]);  break;
 	}
+	return false;
 }
 
 function _or () {
-	if(arguments.length == 0) {
-		_genStack.push(_genStack.pop()|_genStack.pop())
-		return _genStack[_genStack.length-1];
+	var fun = function(x, y) {
+		return x|y;
 	}
 
-	op1 = arguments[0];
-
-	if(arguments.length==1)
-		var op2 = false;
-	else
-		var op2 = arguments[1];
-
-	if ( !(checkArgsT_VN (op1, op2)||checkArgsT_A(op1)) )
-		return false;
-
-	if(arguments.length == 1) {
-		if(op1.type == 'numeric')
-			acc |= op1.value;
-		else
-			acc |= symbols[op1.value];
-		return acc;
-	} else if (arguments.length > 1){
-		if(op2.type == 'numeric')
-			symbols[op1.value] = symbols[op1.value] | op2.value;
-		else
-			symbols[op1.value] = symbols[op1.value] | symbols[op2.value];
-		return symbols[op1.value];
+	switch(arguments.length) {
+		case 0: return _binaryApplier(fun);                                            break;
+		case 1: return _binaryApplier(fun, arguments[0]);                              break;
+		case 2: return _binaryApplier(fun, arguments[0], arguments[1]);                break;
+		case 3: return _binaryApplier(fun, arguments[0], arguments[1], arguments[2]);  break;
 	}
+	return false;
+}
+
+function _xor () {
+	var fun = function(x, y) {
+		return x^y;
+	}
+
+	switch(arguments.length) {
+		case 0: return _binaryApplier(fun);                                            break;
+		case 1: return _binaryApplier(fun, arguments[0]);                              break;
+		case 2: return _binaryApplier(fun, arguments[0], arguments[1]);                break;
+		case 3: return _binaryApplier(fun, arguments[0], arguments[1], arguments[2]);  break;
+	}
+	return false;
 }
 
 function _not () {						//due to a limit in implementation, both complements acc and stack top if args.len == 0
+	var op1, op2;
+
 	if(arguments.length == 0) {
 		var ret = '';
 		if(_genStack.length>0){
@@ -83,56 +65,40 @@ function _not () {						//due to a limit in implementation, both complements acc
 		return ret + ' Accumulator = ' + acc;
 	}
 
-	op1 = arguments[0];
+	if(arguments.length == 1) {
+		op1 = arguments[0];
 
-	if(arguments.length==1)
-		var op2 = false;
-	else
-		var op2 = arguments[1];
+		if ( !checkArgsT_V(op1) ){
+			_logErr('One address NOT requires a variable operand')
+			return false;
+		}
 
-	if ( !checkArgsT_V(op1) )
-		return false;
+		var b = symbols[op1.value];
+		if(b == 0) b = 1;
+		else if (b == 1) b = 0;
+		else b = ~b;
 
-	if(arguments.length >= 1) {
-		 var b = symbols[op1.value];
-		 if(b == 0) b = 1;
-		 else if (b == 1) b = 0;
-		 else b = ~b;
+		symbols[op1.value] = b;
+		return b;
+	}
+
+	if(arguments.length == 2) {
+		op1 = arguments[0];
+		op2 = arguments[1];
+
+		if(!checkArgsT_VA(op1, op2)){
+			_logErr('Two address NOT requires first operand to be a variable and second to be a number or a variable');
+			return false;
+		}
+
+		var b = fetchData(op2);
+		if(b == 0) b = 1;
+		else if (b == 1) b = 0;
+		else b = ~b;
 
 		symbols[op1.value] = b;
 		return b;
 	}
 
 	return false;
-}
-
-function _xor () {
-	if(arguments.length == 0) {
-		_genStack.push(_genStack.pop()^_genStack.pop())
-		return _genStack[_genStack.length-1];
-	}
-
-	op1 = arguments[0];
-
-	if(arguments.length==1)
-		var op2 = false;
-	else
-		var op2 = arguments[1];
-
-	if ( !(checkArgsT_VN (op1, op2)||checkArgsT_A(op1)) )
-		return false;
-
-	if(arguments.length == 1) {
-		if(op1.type == 'numeric')
-			acc ^= op1.value;
-		else
-			acc ^= symbols[op1.value];
-		return acc;
-	} else if (arguments.length > 1){
-		if(op2.type == 'numeric')
-			symbols[op1.value] = symbols[op1.value] ^ op2.value;
-		else
-			symbols[op1.value] = symbols[op1.value] ^ symbols[op2.value];
-		return symbols[op1.value];
-	}
 }

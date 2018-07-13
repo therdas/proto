@@ -6,6 +6,8 @@
 	<link rel="shortcut icon" type="image/png" href="site/img/favicon.png"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400i,700,700i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:500,700,700i" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="site/css/main.css">
 </head>
 <body>
@@ -16,17 +18,17 @@
 		<span id="sharebtn">Share Code</span>
 	</header>
 	<textarea id="editor" spellcheck="false" placeholder="Type Code Here"></textarea>
-
-	<div id="submit" class="btn">Run</div>
-	<div id="result" class="box">Results:
+	<div id="submit" class="btn">Run!</div>
+	<div id="result" class="box">
+		<h2>Console</h2>
 		<span id="here">
+
 		</span>
 	</div>
 
-	<div id="sharearea" class="shbtn">Copy to share code: <input type="text" id="shareboxer"/></div>
-
-	<div id="elrbtn" class="btn"> Show Linewise Results<sup>BETA</sup></div>
-	<div id="eachLineRes" class="hidden box"></div>
+	<div id="sharearea" class="shbtn"><span id="sharetext"> Press to copy share code: </span> <input type="text" id="shareboxer" disabled="true" /></div>
+ 	<div id="elrbtn" class="shbtn"> Show Linewise Results</div>
+	<div id="eachLineRes" class="hidden resbox"></div>
 	</div>
 	<span id="toast" class="hiddenToast">Copied to Clipboard! </span>
 	<script type="text/javascript" src="site/js/io.js"></script>
