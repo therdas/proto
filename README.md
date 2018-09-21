@@ -42,7 +42,7 @@ bun 3
 prn b
 ```
 
-Expected Output: `55`
+Expected Output: `1275`
 
 ## UI
 The UI has three parts:
