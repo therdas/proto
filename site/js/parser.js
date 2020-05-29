@@ -3,6 +3,7 @@ var acc = 0;
 symbols['cflag'] = 'NaN';
 symbols['DBZ'] = false;
 symbols['R1'] = 'NaN'; symbols['R2'] = 'NaN'; symbols['R3'] = 'NaN'; symbols['R4'] = 'NaN'; symbols['R5'] = 'NaN'; symbols['R6'] = 'NaN'; symbols['R7'] = 'NaN';
+symbols['a'] = 'NaN'; symbols['b'] = 'NaN';
 var _addrStack = [];
 var _genStack = [];
 var keywords = 'add sub mul div mod setz set rani ranp ranr lt gt lte gte eq def del ist prn inp return and or not xor';
